@@ -8,26 +8,6 @@ struct ContentView: View {
     @State private var name: String = ""
     @State private var notes: String = ""
     @State private var colorPicker = ""
-    @State private var isTimerRunning = false // added state variable for timer
-        
-        let timer = Timer.publish(every: 5, on: .main, in: .common)
-            .autoconnect()
-        
-        // Start the timer
-        func startTimer() {
-            isTimerRunning = true
-        }
-        
-        // Pause the timer
-        func pauseTimer() {
-            isTimerRunning = false
-        }
-        
-        // Handler for timer tick
-        func onTimerTick() {
-            guard isTimerRunning else { return }
-            Task { await getData() }
-        }
     
     static let colorPicker = ["Green", "Yellow", "Red"]
     
@@ -52,7 +32,7 @@ struct ContentView: View {
                                 .frame(width: 15, height: 15)
                         }
                     }
-                    //.onDelete() -> get whats deleted and assign it to rowId as a string
+                    
                     .onDelete { indexSet in
                         let rowId = queue[indexSet.first!].position
                         queue.remove(atOffsets: indexSet)
@@ -60,32 +40,30 @@ struct ContentView: View {
                     }
 
                 }
-                
-                
+                .refreshable {
+                                await getData()
+                            }
                 .fullScreenCover(isPresented: $showingAddQueue, content: {
                     AddQueue()
                         .onDisappear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 Task {
                                     await getData()
-                                    startTimer() // start timer when queue is updated
                                 }
                             }
                         }
                 })
                 .navigationBarTitle("Virtual Queue", displayMode: .inline)
-                .navigationBarItems(leading: EditButton().onTapGesture { pauseTimer() }) // pause timer when edit button is clicked
+                .navigationBarItems(leading: EditButton())
                 .navigationBarItems(trailing: Button(action: {
                     showingAddQueue = true
-                    pauseTimer() // pause timer when plus button is clicked
                 }) {
                     Image(systemName: "plus")
                 })
                 .onAppear {
                     Task { await getData() }
-                    startTimer() // start timer when content view is displayed
                 }
-                .onReceive(timer, perform: { _ in onTimerTick() })
+               
             }
             .alert(isPresented: $showingAlert) {
                 Alert(title: Text("Loading Error"),
@@ -95,7 +73,7 @@ struct ContentView: View {
         }
     
     func getData() async {
-        let query = "https://script.google.com/macros/s/AKfycbxelvNYSJ8q7DuVDmN0IkoatGrtS9KCXr4QeMZONoFfODSXTjAPGEdURCINcelzJgjHGw/exec"
+        let query = "https://script.google.com/macros/s/AKfycbz1LYYtPmDHB8HIxcRp68QyK-POYoC58ZZe52q4AoJJrmRp2LTL0zTAiwagNET72Pbeew/exec"
         if let url = URL(string: query) {
             if let (data, _) = try? await URLSession.shared.data(from: url) {
                 if let decodedResponse = try? JSONDecoder().decode(Info.self, from: data) {
@@ -108,7 +86,7 @@ struct ContentView: View {
     }
     
     func deleteRow(rowId: String) {
-        let scriptURL = "https://script.google.com/macros/s/AKfycbxelvNYSJ8q7DuVDmN0IkoatGrtS9KCXr4QeMZONoFfODSXTjAPGEdURCINcelzJgjHGw/exec"
+        let scriptURL = "https://script.google.com/macros/s/AKfycbz1LYYtPmDHB8HIxcRp68QyK-POYoC58ZZe52q4AoJJrmRp2LTL0zTAiwagNET72Pbeew/exec"
         guard let url = URL(string: scriptURL) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

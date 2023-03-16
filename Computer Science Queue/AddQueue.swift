@@ -20,7 +20,6 @@ struct AddQueue: View {
         VStack{
             Text("Add Name")
                 .padding()
-            
             Form{
                 VStack{
                     HStack{
@@ -43,11 +42,6 @@ struct AddQueue: View {
                         Task {
                             await postData()
                             presentationMode.wrappedValue.dismiss()
-                            //DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            //    Task {
-                            //        await getData()
-                             //   }
-                           // }
                         }
                     }
                 }
@@ -60,43 +54,34 @@ struct AddQueue: View {
         }
     }
     
-    
     func postData() async {
-        let url = URL(string: "https://script.google.com/macros/s/AKfycbxelvNYSJ8q7DuVDmN0IkoatGrtS9KCXr4QeMZONoFfODSXTjAPGEdURCINcelzJgjHGw/exec")!
+        let url = URL(string: "https://script.google.com/macros/s/AKfycbz1LYYtPmDHB8HIxcRp68QyK-POYoC58ZZe52q4AoJJrmRp2LTL0zTAiwagNET72Pbeew/exec")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
         let data = ["value2": "\(name)", "value3": "\(colorPicker)", "value4": "\(notes)"]
         let jsonData = try! JSONSerialization.data(withJSONObject: data, options: [])
         request.httpBody = jsonData
-
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
-          if let error = error {
-            print(error.localizedDescription)
-            return
-          }
-
-          guard let response = response as? HTTPURLResponse,
-                (200...299).contains(response.statusCode) else {
-            print("Server Error")
-            return
-          }
-
-          guard let data = data,
-                let jsonString = String(data: data, encoding: .utf8) else {
-            print("No Data")
-            return
-          }
-
-          print(jsonString)
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            guard let response = response as? HTTPURLResponse,
+                  (200...299).contains(response.statusCode) else {
+                print("Server Error")
+                return
+            }
+            guard let data = data,
+                  let jsonString = String(data: data, encoding: .utf8) else {
+                print("No Data")
+                return
+            }
+            print(jsonString)
         }
-
         task.resume()
-
     }
-    
 }
 
 struct AddQueue_Previews: PreviewProvider {
