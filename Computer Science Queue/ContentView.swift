@@ -12,65 +12,63 @@ struct ContentView: View {
     static let colorPicker = ["Green", "Yellow", "Red"]
     
     var body: some View {
-            NavigationView {
-                List {
-                    ForEach(queue) { element in
-                        NavigationLink {
-                            Text("Notes:")
-                                .font(.title)
-                                .bold()
-                                .position(x: 50, y: 10)
-                            Text(element.notes)
-                                .position(x: 200, y: -300)
-                        } label: {
-                            Text("\(element.position).")
-                            Text(element.name)
-                                .font(.none)
-                                .bold()
-                            Image(element.color)
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                        }
+        NavigationView {
+            List {
+                ForEach(queue) { element in
+                    NavigationLink {
+                        Text("Notes:")
+                            .font(.title)
+                            .bold()
+                            .position(x: 50, y: 10)
+                        Text(element.notes)
+                            .position(x: 200, y: -300)
+                    } label: {
+                        Text("\(element.position).")
+                        Text(element.name)
+                            .font(.none)
+                            .bold()
+                        Image(element.color)
+                            .resizable()
+                            .frame(width: 15, height: 15)
                     }
-                    
-                    .onDelete { indexSet in
-                        let rowId = queue[indexSet.first!].position
-                        queue.remove(atOffsets: indexSet)
-                        deleteRow(rowId: String(rowId))
-                    }
-
                 }
-                .refreshable {
+                .onDelete { indexSet in
+                    let rowId = queue[indexSet.first!].position
+                    queue.remove(atOffsets: indexSet)
+                    deleteRow(rowId: String(rowId))
+                }
+                
+            }
+            .refreshable {
+                await getData()
+            }
+            .fullScreenCover(isPresented: $showingAddQueue, content: {
+                AddQueue()
+                    .onDisappear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            Task {
                                 await getData()
                             }
-                .fullScreenCover(isPresented: $showingAddQueue, content: {
-                    AddQueue()
-                        .onDisappear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                Task {
-                                    await getData()
-                                }
-                            }
                         }
-                })
-                .navigationBarTitle("Virtual Queue", displayMode: .inline)
-                .navigationBarItems(leading: EditButton())
-                .navigationBarItems(trailing: Button(action: {
-                    showingAddQueue = true
-                }) {
-                    Image(systemName: "plus")
-                })
-                .onAppear {
-                    Task { await getData() }
-                }
-               
-            }
-            .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Loading Error"),
-                      message: Text("There was a problem loading the Queue"),
-                      dismissButton: .default(Text("OK")))
+                    }
+            })
+            .navigationBarTitle("Virtual Queue", displayMode: .inline)
+            .navigationBarItems(leading: EditButton())
+            .navigationBarItems(trailing: Button(action: {
+                showingAddQueue = true
+            }) {
+                Image(systemName: "plus")
+            })
+            .onAppear {
+                Task { await getData() }
             }
         }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("Loading Error"),
+                  message: Text("There was a problem loading the Queue"),
+                  dismissButton: .default(Text("OK")))
+        }
+    }
     
     func getData() async {
         let query = "https://script.google.com/macros/s/AKfycbz1LYYtPmDHB8HIxcRp68QyK-POYoC58ZZe52q4AoJJrmRp2LTL0zTAiwagNET72Pbeew/exec"
@@ -107,8 +105,6 @@ struct ContentView: View {
         }
         task.resume()
     }
-
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
