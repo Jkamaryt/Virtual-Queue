@@ -71,7 +71,7 @@ struct ContentView: View {
     }
     
     func getData() async {
-        let query = "https://script.google.com/macros/s/AKfycbz1LYYtPmDHB8HIxcRp68QyK-POYoC58ZZe52q4AoJJrmRp2LTL0zTAiwagNET72Pbeew/exec"
+        let query = "https://script.google.com/macros/s/AKfycbzEtDwZIHN6L8RUnINrKFhh_rho8KrI010xu704wgNYy8hYgqmRKbKTWlxSPC8bfPtwWg/exec"
         if let url = URL(string: query) {
             if let (data, _) = try? await URLSession.shared.data(from: url) {
                 if let decodedResponse = try? JSONDecoder().decode(Info.self, from: data) {
@@ -84,7 +84,7 @@ struct ContentView: View {
     }
     
     func deleteRow(rowId: String) {
-        let scriptURL = "https://script.google.com/macros/s/AKfycbz1LYYtPmDHB8HIxcRp68QyK-POYoC58ZZe52q4AoJJrmRp2LTL0zTAiwagNET72Pbeew/exec"
+        let scriptURL = "https://script.google.com/macros/s/AKfycbzEtDwZIHN6L8RUnINrKFhh_rho8KrI010xu704wgNYy8hYgqmRKbKTWlxSPC8bfPtwWg/exec"
         guard let url = URL(string: scriptURL) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

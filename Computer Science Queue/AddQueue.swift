@@ -55,7 +55,7 @@ struct AddQueue: View {
     }
     
     func postData() async {
-        let url = URL(string: "https://script.google.com/macros/s/AKfycbz1LYYtPmDHB8HIxcRp68QyK-POYoC58ZZe52q4AoJJrmRp2LTL0zTAiwagNET72Pbeew/exec")!
+        let url = URL(string: "https://script.google.com/macros/s/AKfycbzEtDwZIHN6L8RUnINrKFhh_rho8KrI010xu704wgNYy8hYgqmRKbKTWlxSPC8bfPtwWg/exec")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
