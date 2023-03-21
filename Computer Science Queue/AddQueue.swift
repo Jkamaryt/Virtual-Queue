@@ -46,6 +46,7 @@ struct AddQueue: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(false)
             Spacer()
             Button {
                 presentationMode.wrappedValue.dismiss()
@@ -55,7 +56,7 @@ struct AddQueue: View {
     }
     
     func postData() async {
-        let url = URL(string: "https://script.google.com/macros/s/AKfycbzEtDwZIHN6L8RUnINrKFhh_rho8KrI010xu704wgNYy8hYgqmRKbKTWlxSPC8bfPtwWg/exec")!
+        let url = URL(string: "https://script.google.com/macros/s/AKfycbw04Wc0mj9cUBkIT4xT8xdrhItjTvi5Kdsq0ZpDxeOBqIjmOT4bVfO2p5BVkKAaF9FieQ/exec")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

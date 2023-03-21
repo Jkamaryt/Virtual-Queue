@@ -1,3 +1,9 @@
+//
+//  ContentView.swift
+//  Computer Science Queue
+//
+//  Created by Jack Kamaryt on 3/9/23.
+//
 import SwiftUI
 
 struct ContentView: View {
@@ -71,7 +77,7 @@ struct ContentView: View {
     }
     
     func getData() async {
-        let query = "https://script.google.com/macros/s/AKfycbzEtDwZIHN6L8RUnINrKFhh_rho8KrI010xu704wgNYy8hYgqmRKbKTWlxSPC8bfPtwWg/exec"
+        let query = "https://script.google.com/macros/s/AKfycbw04Wc0mj9cUBkIT4xT8xdrhItjTvi5Kdsq0ZpDxeOBqIjmOT4bVfO2p5BVkKAaF9FieQ/exec"
         if let url = URL(string: query) {
             if let (data, _) = try? await URLSession.shared.data(from: url) {
                 if let decodedResponse = try? JSONDecoder().decode(Info.self, from: data) {
@@ -84,7 +90,7 @@ struct ContentView: View {
     }
     
     func deleteRow(rowId: String) {
-        let scriptURL = "https://script.google.com/macros/s/AKfycbzEtDwZIHN6L8RUnINrKFhh_rho8KrI010xu704wgNYy8hYgqmRKbKTWlxSPC8bfPtwWg/exec"
+        let scriptURL = "https://script.google.com/macros/s/AKfycbw04Wc0mj9cUBkIT4xT8xdrhItjTvi5Kdsq0ZpDxeOBqIjmOT4bVfO2p5BVkKAaF9FieQ/exec"
         guard let url = URL(string: scriptURL) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
