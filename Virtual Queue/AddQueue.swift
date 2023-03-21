@@ -1,8 +1,8 @@
 //
 //  AddQueue.swift
-//  Computer Science Queue
+//  Virtual Queue
 //
-//  Created by Jack Kamaryt on 3/9/23.
+//  Created by Jack Kamaryt on 3/3/23.
 //
 
 import SwiftUI
@@ -15,8 +15,6 @@ struct AddQueue: View {
     @State private var notes: String = ""
     @State private var colorPicker = ""
     static let colorPicker = ["Green", "Yellow", "Red"]
-    
-   
     
     var body: some View {
         VStack{

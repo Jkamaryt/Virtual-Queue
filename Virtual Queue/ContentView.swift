@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  Computer Science Queue
+//  Virtual Queue
 //
-//  Created by Jack Kamaryt on 3/9/23.
+//  Created by Jack Kamaryt on 3/3/23.
 //
 import SwiftUI
 
@@ -13,10 +13,7 @@ struct ContentView: View {
     @State private var position: Int = 0
     @State private var name: String = ""
     @State private var notes: String = ""
-    @State private var colorPicker = ""
-    
-    static let colorPicker = ["Green", "Yellow", "Red"]
-    
+   
     var body: some View {
         NavigationView {
             List {

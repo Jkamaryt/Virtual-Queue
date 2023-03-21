@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F255514329BA83070032F187 /* AddQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255514229BA83070032F187 /* AddQueue.swift */; };
-		F29DC8FC29B24BF6004E706A /* Computer_Science_QueueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29DC8FB29B24BF6004E706A /* Computer_Science_QueueApp.swift */; };
+		F29DC8FC29B24BF6004E706A /* Virtual_Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29DC8FB29B24BF6004E706A /* Virtual_Queue.swift */; };
 		F29DC8FE29B24BF6004E706A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29DC8FD29B24BF6004E706A /* ContentView.swift */; };
 		F29DC90029B24BF6004E706A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F29DC8FF29B24BF6004E706A /* Assets.xcassets */; };
 		F29DC90329B24BF6004E706A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F29DC90229B24BF6004E706A /* Preview Assets.xcassets */; };
@@ -16,8 +16,8 @@
 
 /* Begin PBXFileReference section */
 		F255514229BA83070032F187 /* AddQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQueue.swift; sourceTree = "<group>"; };
-		F29DC8F829B24BF6004E706A /* Computer Science Queue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Computer Science Queue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F29DC8FB29B24BF6004E706A /* Computer_Science_QueueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer_Science_QueueApp.swift; sourceTree = "<group>"; };
+		F29DC8F829B24BF6004E706A /* Virtual Queue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Queue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F29DC8FB29B24BF6004E706A /* Virtual_Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Virtual_Queue.swift; sourceTree = "<group>"; };
 		F29DC8FD29B24BF6004E706A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F29DC8FF29B24BF6004E706A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F29DC90229B24BF6004E706A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -37,7 +37,7 @@
 		F29DC8EF29B24BF6004E706A = {
 			isa = PBXGroup;
 			children = (
-				F29DC8FA29B24BF6004E706A /* Computer Science Queue */,
+				F29DC8FA29B24BF6004E706A /* Virtual Queue */,
 				F29DC8F929B24BF6004E706A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,21 +45,21 @@
 		F29DC8F929B24BF6004E706A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F29DC8F829B24BF6004E706A /* Computer Science Queue.app */,
+				F29DC8F829B24BF6004E706A /* Virtual Queue.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F29DC8FA29B24BF6004E706A /* Computer Science Queue */ = {
+		F29DC8FA29B24BF6004E706A /* Virtual Queue */ = {
 			isa = PBXGroup;
 			children = (
-				F29DC8FB29B24BF6004E706A /* Computer_Science_QueueApp.swift */,
+				F29DC8FB29B24BF6004E706A /* Virtual_Queue.swift */,
 				F29DC8FD29B24BF6004E706A /* ContentView.swift */,
 				F255514229BA83070032F187 /* AddQueue.swift */,
 				F29DC8FF29B24BF6004E706A /* Assets.xcassets */,
 				F29DC90129B24BF6004E706A /* Preview Content */,
 			);
-			path = "Computer Science Queue";
+			path = "Virtual Queue";
 			sourceTree = "<group>";
 		};
 		F29DC90129B24BF6004E706A /* Preview Content */ = {
@@ -73,9 +73,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F29DC8F729B24BF6004E706A /* Computer Science Queue */ = {
+		F29DC8F729B24BF6004E706A /* Virtual Queue */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F29DC90629B24BF6004E706A /* Build configuration list for PBXNativeTarget "Computer Science Queue" */;
+			buildConfigurationList = F29DC90629B24BF6004E706A /* Build configuration list for PBXNativeTarget "Virtual Queue" */;
 			buildPhases = (
 				F29DC8F429B24BF6004E706A /* Sources */,
 				F29DC8F529B24BF6004E706A /* Frameworks */,
@@ -85,11 +85,11 @@
 			);
 			dependencies = (
 			);
-			name = "Computer Science Queue";
+			name = "Virtual Queue";
 			packageProductDependencies = (
 			);
 			productName = "Computer Science Queue";
-			productReference = F29DC8F829B24BF6004E706A /* Computer Science Queue.app */;
+			productReference = F29DC8F829B24BF6004E706A /* Virtual Queue.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -107,7 +107,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F29DC8F329B24BF6004E706A /* Build configuration list for PBXProject "Computer Science Queue" */;
+			buildConfigurationList = F29DC8F329B24BF6004E706A /* Build configuration list for PBXProject "Virtual Queue" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -122,7 +122,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F29DC8F729B24BF6004E706A /* Computer Science Queue */,
+				F29DC8F729B24BF6004E706A /* Virtual Queue */,
 			);
 		};
 /* End PBXProject section */
@@ -146,7 +146,7 @@
 			files = (
 				F255514329BA83070032F187 /* AddQueue.swift in Sources */,
 				F29DC8FE29B24BF6004E706A /* ContentView.swift in Sources */,
-				F29DC8FC29B24BF6004E706A /* Computer_Science_QueueApp.swift in Sources */,
+				F29DC8FC29B24BF6004E706A /* Virtual_Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +274,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Computer Science Queue/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Virtual Queue/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -302,7 +302,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Computer Science Queue/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Virtual Queue/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -326,7 +326,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F29DC8F329B24BF6004E706A /* Build configuration list for PBXProject "Computer Science Queue" */ = {
+		F29DC8F329B24BF6004E706A /* Build configuration list for PBXProject "Virtual Queue" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F29DC90429B24BF6004E706A /* Debug */,
@@ -335,7 +335,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F29DC90629B24BF6004E706A /* Build configuration list for PBXNativeTarget "Computer Science Queue" */ = {
+		F29DC90629B24BF6004E706A /* Build configuration list for PBXNativeTarget "Virtual Queue" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F29DC90729B24BF6004E706A /* Debug */,
