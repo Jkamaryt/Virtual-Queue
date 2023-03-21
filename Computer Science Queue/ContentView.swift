@@ -42,8 +42,12 @@ struct ContentView: View {
                     let rowId = queue[indexSet.first!].position
                     queue.remove(atOffsets: indexSet)
                     deleteRow(rowId: String(rowId))
-                }
-                
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        Task{
+                            await getData()
+                        }
+                    }
+                } 
             }
             .refreshable {
                 await getData()
@@ -77,7 +81,7 @@ struct ContentView: View {
     }
     
     func getData() async {
-        let query = "https://script.google.com/macros/s/AKfycbw04Wc0mj9cUBkIT4xT8xdrhItjTvi5Kdsq0ZpDxeOBqIjmOT4bVfO2p5BVkKAaF9FieQ/exec"
+        let query = "https://script.google.com/macros/s/AKfycbyR0eAE7VjpRUmJfdMEBewckStvgCDSWHsPwCYmi4CV-929oBerQdxn_VX6nFvHNX9mDA/exec"
         if let url = URL(string: query) {
             if let (data, _) = try? await URLSession.shared.data(from: url) {
                 if let decodedResponse = try? JSONDecoder().decode(Info.self, from: data) {
@@ -90,7 +94,7 @@ struct ContentView: View {
     }
     
     func deleteRow(rowId: String) {
-        let scriptURL = "https://script.google.com/macros/s/AKfycbw04Wc0mj9cUBkIT4xT8xdrhItjTvi5Kdsq0ZpDxeOBqIjmOT4bVfO2p5BVkKAaF9FieQ/exec"
+        let scriptURL = "https://script.google.com/macros/s/AKfycbyR0eAE7VjpRUmJfdMEBewckStvgCDSWHsPwCYmi4CV-929oBerQdxn_VX6nFvHNX9mDA/exec"
         guard let url = URL(string: scriptURL) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

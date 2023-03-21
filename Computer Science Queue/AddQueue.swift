@@ -16,6 +16,8 @@ struct AddQueue: View {
     @State private var colorPicker = ""
     static let colorPicker = ["Green", "Yellow", "Red"]
     
+   
+    
     var body: some View {
         VStack{
             Text("Add Name")
@@ -56,7 +58,7 @@ struct AddQueue: View {
     }
     
     func postData() async {
-        let url = URL(string: "https://script.google.com/macros/s/AKfycbw04Wc0mj9cUBkIT4xT8xdrhItjTvi5Kdsq0ZpDxeOBqIjmOT4bVfO2p5BVkKAaF9FieQ/exec")!
+        let url = URL(string: "https://script.google.com/macros/s/AKfycbyR0eAE7VjpRUmJfdMEBewckStvgCDSWHsPwCYmi4CV-929oBerQdxn_VX6nFvHNX9mDA/exec")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

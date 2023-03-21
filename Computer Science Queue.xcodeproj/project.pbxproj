@@ -37,7 +37,6 @@
 		F29DC8EF29B24BF6004E706A = {
 			isa = PBXGroup;
 			children = (
-				F2DD3C6629C2537900A4CAAA /* Packages */,
 				F29DC8FA29B24BF6004E706A /* Computer Science Queue */,
 				F29DC8F929B24BF6004E706A /* Products */,
 			);
@@ -69,13 +68,6 @@
 				F29DC90229B24BF6004E706A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		F2DD3C6629C2537900A4CAAA /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
