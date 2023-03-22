@@ -17,41 +17,44 @@ struct AddQueue: View {
     static let colorPicker = ["Green", "Yellow", "Red"]
     
     var body: some View {
-        VStack{
-            Text("Add Name")
-                .padding()
-            Form{
-                VStack{
-                    HStack{
-                        Text("Name:")
-                        TextField("name",text: $name)
-                            .textFieldStyle(.roundedBorder)
-                    }
-                    Picker("Color:", selection: $colorPicker){
-                        ForEach(Self.colorPicker, id: \.self) { color in
-                            Text(color)
+        NavigationView{
+            VStack{
+                Form{
+                    VStack{
+                        HStack{
+                            Text("Name:")
+                            TextField("name",text: $name)
+                                .textFieldStyle(.roundedBorder)
                         }
-                    }
-                    .pickerStyle(.segmented)
-                    HStack{
-                        Text("Notes:")
-                        TextField("notes",text: $notes)
-                            .textFieldStyle(.roundedBorder)
-                    }
-                    Button("Add") {
-                        Task {
-                            await postData()
-                            presentationMode.wrappedValue.dismiss()
+                        Picker("Color:", selection: $colorPicker){
+                            ForEach(Self.colorPicker, id: \.self) { color in
+                                Text(color)
+                            }
                         }
+                        .pickerStyle(.segmented)
+                        HStack{
+                            Text("Notes:")
+                            TextField("notes",text: $notes)
+                                .textFieldStyle(.roundedBorder)
+                        }
+                        Button("Add") {
+                            Task {
+                                await postData()
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                        
                     }
                 }
             }
             .navigationBarBackButtonHidden(false)
-            Spacer()
-            Button {
+            .navigationBarTitle("Add Name", displayMode: .inline)
+            .navigationBarItems(leading:  Button(action: {
                 presentationMode.wrappedValue.dismiss()
-            } label: { Text("Back") }
-                .position(x:30, y:-390)
+            } ){
+                Text("Back")
+            }, trailing: Text(""))
+            Spacer()
         }
     }
     
